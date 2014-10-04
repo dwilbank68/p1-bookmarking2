@@ -23,7 +23,7 @@ users = User.all
 topic_num = 1
 15.times do
   Topic.create(
-      name:       "Topic " + topic_num.to_s + " " + Faker::Lorem.word,
+      name: Faker::Lorem.word,
   )
   topic_num += 1
 end
