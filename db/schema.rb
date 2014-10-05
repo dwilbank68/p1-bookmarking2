@@ -25,11 +25,14 @@ ActiveRecord::Schema.define(version: 20141003192336) do
   add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id"
 
   create_table "likes", force: true do |t|
-    t.integer  "user_id"
     t.integer  "bookmark_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "likes", ["bookmark_id"], name: "index_likes_on_bookmark_id"
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
 
   create_table "topics", force: true do |t|
     t.string   "name"
@@ -52,11 +55,11 @@ ActiveRecord::Schema.define(version: 20141003192336) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "image"
     t.string   "provider"
     t.string   "uid"
-    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

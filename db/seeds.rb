@@ -8,6 +8,7 @@ require 'faker'
   )
   # user.skip_confirmation! - since confirmation emails are turned off
   user.save!
+
 end
 
 me = User.new(

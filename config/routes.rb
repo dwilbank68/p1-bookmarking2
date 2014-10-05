@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :users, only: [:show, :update, :index]
   # You can have the root of your site routed with "root"
-
+  resources :bookmarks do
+    resources :likes, only: [:create,:destroy]
+  end
   # devise_scope :user do
   #   get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end

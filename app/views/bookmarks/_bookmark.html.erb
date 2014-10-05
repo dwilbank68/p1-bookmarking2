@@ -1,9 +1,11 @@
 <!-- @bookmarks from topics/_topic.html.erb -->
 
 <div class="media">
-  <tr>
-    <td><%= bookmark.url %></td>
-    <td><%= bookmark.created_at %></td>
-  </tr>
+  <div class="media-body">
+      <h3><%= bookmark.topic.name %></h3>
+      <p><%= bookmark.url %></p>
+      <small><%= bookmark.created_at %></small><br/>
+      <small>Created by <%= bookmark.user_id %></small>
+  </div>
 </div>
 
