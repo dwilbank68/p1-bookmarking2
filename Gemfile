@@ -11,12 +11,15 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'capybara', '~> 2.3.0'
   gem 'selenium-webdriver'
+  gem 'awesome_print'
   #gem 'pry-rails'
 end
 
 group :development do
   gem 'sqlite3'
   gem 'quiet_assets'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :test do
@@ -48,7 +51,7 @@ gem 'pundit'
 gem 'will_paginate', '~> 3.0.5'
 
 gem 'hirb'
-#gem 'awesome_print', :require => 'ap'
+
 gem 'newrelic_rpm'
 gem 'i18n', '~> 0.6.11' # rails g devise:install wouldn't work without it
 gem 'omniauth-facebook'
