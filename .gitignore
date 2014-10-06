@@ -15,9 +15,6 @@
 /log/*.log
 /tmp
 
-
-/config/secrets.yml
-
 .idea/
 # Ignore application configuration
 /config/application.yml
