@@ -1,9 +1,9 @@
 class UserMailer < ActionMailer::Base
-  default from: 'notifications@example.com'
+  default from: 'bookmarker@app30409245.mailgun.org'
 
-  def welcome_email(user)
-    @user = user
-    @url  = 'http://example.com/login'
-    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+  def confirmation_email(email_user, bookmark)
+    @user = email_user
+    @bookmark  = bookmark
+    mail(to: @user.email, subject: 'Bookmark saved', )
   end
 end

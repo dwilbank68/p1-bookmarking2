@@ -17,16 +17,17 @@ class IncomingController < ApplicationController
     topic = Topic.find_or_create_by(:name => topic_name)
     email_user = User.find_by_email(params["sender"])
     bookmark = email_user.bookmarks.build(:url => params["stripped-text"], :topic => topic)
-    # You put the message-splitting and business
-    # magic here.
+
     if bookmark.save
       Like.create(:bookmark_id => bookmark.id, :user_id => email_user.id)
-      # put an entry in the current_user's likes table for this bookmark
+      confirmation_email(email_user, bookmark)
       # email current_user back with a confirmation
       head 200 # who is expecting or needing this head?
       #email email_user back with a confirmation
     else
-      #email email_user with failure notification
+      puts "*"*30
+      puts "failure"
+      puts "*"*30#email email_user with failure notification
     end
   end
 end
