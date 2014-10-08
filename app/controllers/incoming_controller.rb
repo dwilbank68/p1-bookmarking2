@@ -20,7 +20,7 @@ class IncomingController < ApplicationController
 
     if bookmark.save
       Like.create(:bookmark_id => bookmark.id, :user_id => email_user.id)
-      confirmation_email(email_user, bookmark)
+      UserMailer.confirmation_email(email_user, bookmark).deliver_now
       # email current_user back with a confirmation
       head 200 # who is expecting or needing this head?
       #email email_user back with a confirmation
