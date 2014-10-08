@@ -6,12 +6,12 @@ class IncomingController < ApplicationController
   def create
     # Take a look at these in your server logs
     # to get a sense of what you're dealing with.
-    #puts "INCOMING PARAMS HERE: #{params}"
-    puts "*"*30
-    puts "SUBJECT: #{params["subject"]}"
-    puts "SENDER: #{params["sender"]}"
-    puts "LINK: #{params["stripped-text"]}"
-    puts "*"*30
+    # puts "INCOMING PARAMS HERE: #{params}"
+    # puts "*"*30
+    # puts "SUBJECT: #{params["subject"]}"
+    # puts "SENDER: #{params["sender"]}"
+    # puts "LINK: #{params["stripped-text"]}"
+    # puts "*"*30
 
     topic_name = params["subject"] || "Misc"
     topic = Topic.find_or_create_by(:name => topic_name)
@@ -20,7 +20,7 @@ class IncomingController < ApplicationController
     # You put the message-splitting and business
     # magic here.
     if bookmark.save
-    # Assuming all went well.
+      Like.create(:bookmark_id => bookmark.id, :user_id => email_user.id)
       # put an entry in the current_user's likes table for this bookmark
       # email current_user back with a confirmation
       head 200 # who is expecting or needing this head?
