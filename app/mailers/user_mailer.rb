@@ -10,4 +10,5 @@ class UserMailer < ActionMailer::Base
     puts "*"*30
     mail(to: @user.email, subject: 'Bookmark saved')
   end
+
 end
