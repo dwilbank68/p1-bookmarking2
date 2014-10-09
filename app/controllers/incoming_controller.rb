@@ -28,6 +28,7 @@ class IncomingController < ApplicationController
       puts "*"*30
       puts "failure"
       puts "*"*30#email email_user with failure notification
+      UserMailer.rejection_email(email_user, bookmark).deliver
     end
   end
 end
