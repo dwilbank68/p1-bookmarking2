@@ -13,7 +13,7 @@ class IncomingController < ApplicationController
     # puts "LINK: #{params["stripped-text"]}"
     # puts "*"*30
 
-    topic_name = params["subject"] || "Misc"
+    topic_name = params["subject"] == "" ? "Misc" : params["subject"]
     topic = Topic.find_or_create_by(:name => topic_name)
     email_user = User.find_by_email(params["sender"])
     bookmark = email_user.bookmarks.build(:url => params["stripped-text"], :topic => topic)

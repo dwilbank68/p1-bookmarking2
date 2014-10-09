@@ -4,20 +4,12 @@ class UserMailer < ActionMailer::Base
   def confirmation_email(email_user, bookmark)
     @user = email_user
     @bookmark  = bookmark
-    puts "*"*30
-    puts "@user.email"
-    puts "@bookmark.name"
-    puts "*"*30
     mail(to: @user.email, subject: 'Bookmark saved')
   end
 
   def rejection_email(email_user, bookmark)
     @user = email_user
     @bookmark  = bookmark
-    puts "*"*30
-    puts "@user.email"
-    puts "@bookmark.name"
-    puts "*"*30
     mail(to: @user.email, subject: 'Bookmark not saved')
   end
 
