@@ -1,5 +1,7 @@
 class Like < ActiveRecord::Base
   belongs_to :user
   belongs_to :bookmark
-  #belongs_to :liked_bookmark, class_name: "Bookmark"
+
+  validates_uniqueness_of :user_id, scope: :bookmark_id
+
 end

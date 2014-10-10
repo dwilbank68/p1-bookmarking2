@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'bookmark/destroy'
+
   resources :topics
 
   root 'welcome#index'

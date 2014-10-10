@@ -1,0 +1,12 @@
+<!-- @liked_topics from users/_show.html.erb -->
+
+<div class="media">
+  <div class="media-body">
+    <h2><%= topic.name %></h2>
+
+        <%= render topic.liked_bookmarks(current_user) %>
+
+  </div>
+</div>
+
+<!-- @bookmarks to views/bookmarks/_bookmark.html.erb -->

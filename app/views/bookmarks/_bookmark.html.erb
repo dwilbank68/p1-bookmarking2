@@ -1,11 +1,24 @@
 <!-- @bookmarks from topics/_topic.html.erb -->
 
-<div class="media">
-  <div class="media-body">
-      <h3><%= bookmark.topic.name %></h3>
-      <p><%= bookmark.url %></p>
-      <small><%= bookmark.created_at %></small><br/>
-      <small>Created by <%= bookmark.user_id %></small>
-  </div>
-</div>
+<!--<div class="media">-->
+  <!--<div class="media-body">-->
+      <!--<p><%#= bookmark.url %></p>-->
+      <!--<small><%# bookmark.created_at %></small><br/>-->
+      <!--<small>Created by <%#= bookmark.user_id %></small>-->
+  <!--</div>-->
+<!--</div>-->
+<table class="table table-hover table-bordered table-condensed">
+<tr><a href="<%= bookmark.url %>"><%= bookmark.url %></a></tr>
+<tr>
+    <td><small><%= bookmark.created_at %></small></td>
+    <td><small>This is the bookmark.id<%= bookmark.id %></small></td>
+    <td><small>Created by <%= bookmark.user_id %></td>
+    <td>
+        <%# if policy(@like).destroy? %>
+        <%= link_to "Unlike", bookmark_like_path(bookmark_id:bookmark.id), method: :delete %>
+        <%#= link_to "Unlike", bookmark_like_path, method: :delete %>
+        <%# end %>
+    </td>
+</tr>
+</table>
 
