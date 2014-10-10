@@ -11,7 +11,7 @@
 <tr><a href="<%= bookmark.url %>"><%= bookmark.url %></a></tr>
 <tr>
     <td><small><%= bookmark.created_at %></small></td>
-    <td><small>This is the bookmark.id<%= bookmark.id %></small></td>
+    <td><small>This is the bookmark.id  <%= bookmark.id %></small></td>
     <td><small>Created by <%= bookmark.user_id %></td>
     <td>
         <%# if policy(@like).destroy? %>

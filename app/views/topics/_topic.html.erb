@@ -2,7 +2,7 @@
 
 <div class="media">
   <div class="media-body">
-    <h2><%= topic.name %></h2>
+    <h3><%= topic.name %> with <%= topic.liked_bookmarks(current_user).count %> liked bookmarks</h3>
 
         <%= render topic.liked_bookmarks(current_user) %>
 
