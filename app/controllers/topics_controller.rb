@@ -10,6 +10,8 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @topic = Topic.find(params[:id])
+    @bookmarks = @topic.bookmarks
   end
 
   # GET /topics/new

@@ -106,12 +106,10 @@ me.save!
 
 users = User.all
 
-topic_num = 1
 15.times do
   Topic.create(
       name: Faker::Lorem.word,
   )
-  topic_num += 1
 end
 topics = Topic.all
 

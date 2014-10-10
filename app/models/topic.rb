@@ -2,12 +2,11 @@ class Topic < ActiveRecord::Base
   belongs_to  :user
   has_many    :bookmarks
 
+  validates :name, { :uniqueness => true }
+
   default_scope {order('name')}
 
   def liked_bookmarks(cur_usr)
-            
-
-
     liked_bookmark_ids = cur_usr.likes.pluck(:bookmark_id)
     bookmarks.where(id:liked_bookmark_ids).order('created_at DESC')
   end
