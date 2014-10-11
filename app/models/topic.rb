@@ -4,11 +4,20 @@ class Topic < ActiveRecord::Base
 
   validates :name, { :uniqueness => true }
 
+  before_destroy :check_for_bookmarks
+
   default_scope {order('name')}
 
   def liked_bookmarks(cur_usr)
     liked_bookmark_ids = cur_usr.likes.pluck(:bookmark_id)
     bookmarks.where(id:liked_bookmark_ids).order('created_at DESC')
+  end
+
+  def check_for_bookmarks
+    if bookmarks.any?
+      errors[:base] << "cannot delete submission that has already been paid"
+      return false
+    end
   end
 
 end

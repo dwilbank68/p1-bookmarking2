@@ -1,23 +1,28 @@
 <h1>Listing topics</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-<!--TODO put policies on edit and destroy, create admin user to test them out-->
+
+
 <!--TODO make topics show all bookmarks-->
 <!--TODO make a show all topics button-->
 <!--TODO url verification in bookmark model-->
-  <tbody>
+
     <% @topics.each do |topic| %>
-      <tr>
-        <td><%= topic.name %></td>
-        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+
+        <%= topic.name %>
+
+        <% if policy(topic).edit? %>
+            <%= link_to 'Edit', edit_topic_path(topic) %>
+        <% end %>
+
+        <% if policy(topic).destroy? %>
+          <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+
+        <ul class="list-inline">
+          <%= render topic.bookmarks %>
+        </ul>
+
+
     <% end %>
-  </tbody>
-</table>
+
+
