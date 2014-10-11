@@ -1,7 +1,10 @@
 <!-- @bookmarks from topics/_topic.html.erb -->
 
 <li>
-  <table class="table table-hover table-bordered table-condensed span3">
+
+  <%= params.inspect %>
+
+  <table class="table table-hover table-bordered table-condensed span3 <%= bookmark.liked? %>">
     <tr>
       <td><a href="<%= bookmark.url %>"><%= bookmark.url %></a></td>
     </tr>
@@ -21,10 +24,20 @@
     </tr>
     <tr>
       <td>
-        <%# if policy(@like).destroy? %>
-        <%= link_to "Unlike", bookmark_like_path(bookmark_id: bookmark.id), method: :delete %>
-        <%#= link_to "Unlike", bookmark_like_path, method: :delete %>
-        <%# end %>
+
+        <% if policy(bookmark).destroy? %>
+            <%= link_to "Delete", bookmark_path(bookmark), method: :delete %>
+        <% end %>
+
+        <% if params[:controller] == "users" %>
+            <%= link_to "Unlike", bookmark_like_path(bookmark_id: bookmark.id), method: :delete %>
+        <% end %>
+
+        <% if params[:controller] == "topics" %>  <!--meaning you are looking at bookmarks-->
+            <%#= link_to [post, Favorite.new], class: 'btn btn-primary', method: :post do %>
+            <%= link_to "Like", bookmark_likes_path(bookmark_id: bookmark.id), method: :post %>
+        <% end %>
+
       </td>
     </tr>
   </table>
