@@ -4,9 +4,12 @@
 <!--TODO url verification in bookmark model-->
 
     <% @topics.each do |topic| %>
-    <a href="<%= topic_path(topic) %>" class="list-group-item"><%= topic.name %><span class="badge"><%= topic.bookmarks.count %></span></a>
+    <!--<a href="<%#= topic_path(topic) %>" class="list-group-item"><%#= topic.name %><span class="badge"><%#= topic.bookmarks.count %></span></a>-->
 
-    <!--<%#= link_to topic.name, topic %> with <%#= topic.bookmarks.count %>-->
+        <%= link_to topic, class:'list-group-item' do %>
+            <%= topic.name %>
+            <span class="badge"><%= topic.bookmarks.count %></span>
+        <% end %>
 
         <% if policy(topic).edit? %>
             <%= link_to 'Edit', edit_topic_path(topic) %>

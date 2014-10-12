@@ -3,7 +3,11 @@
 <div class="media">
   <div class="media-body">
     <!--<h3><%#= topic.name %> with <%#= topic.liked_bookmarks(current_user).count %> liked bookmarks</h3>-->
-    <%= link_to topic.name, topic %> with <%= topic.liked_bookmarks(current_user).count %> liked bookmarks
+    <%= link_to topic, class:'list-group-item' do %>
+        <%= topic.name %>
+        <span class="badge"><%= topic.liked_bookmarks(current_user).count %></span>
+    <% end %>
+    <!--    <%#= link_to topic.name, topic %> with <%#= topic.liked_bookmarks(current_user).count %> liked bookmarks -->
         <ul class="list-inline">
           <%= render topic.liked_bookmarks(current_user) %>
         </ul>
