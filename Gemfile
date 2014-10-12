@@ -55,3 +55,5 @@ gem 'hirb'
 gem 'newrelic_rpm'
 gem 'i18n', '~> 0.6.11' # rails g devise:install wouldn't work without it
 gem 'omniauth-facebook'
+gem 'embedly'
+gem 'querystring'

@@ -1,14 +1,12 @@
 <h1>All Topics</h1>
 
-
-
-<!--TODO make topics show all bookmarks-->
 <!--TODO make a show all topics button-->
 <!--TODO url verification in bookmark model-->
 
     <% @topics.each do |topic| %>
+    <a href="<%= topic_path(topic) %>" class="list-group-item"><%= topic.name %><span class="badge"><%= topic.bookmarks.count %></span></a>
 
-        <%= topic.name %>
+    <!--<%#= link_to topic.name, topic %> with <%#= topic.bookmarks.count %>-->
 
         <% if policy(topic).edit? %>
             <%= link_to 'Edit', edit_topic_path(topic) %>
