@@ -2,42 +2,57 @@
 
 <li>
 
-  <table class="table table-bordered table-condensed <%= bookmark.liked? %>">
+  <table class="table table-condensed <%= bookmark.liked?(@current_user,bookmark) %>" id="bookmark-<%= bookmark.id %>">
     <tr>
-      <td><a href="<%= bookmark.url %>"><%= bookmark.url %></a></td>
+      <td><a href="<%= bookmark.url %>"><%= bookmark.url.truncate(30) %></a></td>
     </tr>
-    <!--<tr><small><%#= bookmark.created_at %></small></tr>-->
-    <tr>
-      <td><%= bookmark.created_at %></td>
-    </tr>
-    <tr>
-      <td>
-        <small>This is the bookmark.id  <%= bookmark.id %></small>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <small>Created by <%= bookmark.user_id %></small>
-      </td>
-    </tr>
-    <tr>
-      <td>
+    <% if bookmark.title %>
+        <tr><td><%= bookmark.title %></td></tr>
+    <% end %>
 
+    <% if bookmark.description %>
+        <tr>
+          <td><%= bookmark.description %></td>
+        </tr>
+    <% end %>
+
+    <!--<tr>-->
+      <!--<td>-->
+        <!--<small>This is the bookmark.id  <%= bookmark.id %></small>-->
+      <!--</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td>-->
+        <!--<small>Created by <%#= bookmark.user_id %></small>-->
+      <!--</td>-->
+    <!--</tr>-->
+    <% if bookmark.embed %>
+        <tr>
+          <td>  <%= bookmark.embed.html_safe if bookmark.embed%></td>
+        </tr>
+    <% end %>
+    <tr>
+
+      <td>
+        <% if bookmark.liked?(@current_user,bookmark) == 'liked'%>
+            <%= link_to "Unlike", bookmark_like_path( bookmark_id: bookmark.id, id:      current_user.id), id:"unlike-#{bookmark.id}",method: :delete, remote: true %>
+            <%= link_to "Like",   bookmark_likes_path(bookmark_id: bookmark.id, user_id: current_user.id), class:"hidden", id:"like-#{bookmark.id}",method: :post,   remote: true %>
+        <% else %>
+            <%= link_to "Unlike", bookmark_like_path( bookmark_id: bookmark.id, id:      current_user.id), class:"hidden", id:"unlike-#{bookmark.id}",method: :delete, remote: true %>
+            <%= link_to "Like",   bookmark_likes_path(bookmark_id: bookmark.id, user_id: current_user.id), id:"like-#{bookmark.id}",method: :post,   remote: true %>
+        <% end %>
+      </td>
+
+    <tr>
+      <td>
         <% if policy(bookmark).destroy? %>
-            <%= link_to "Delete", bookmark_path(bookmark), method: :delete %>
+            <%= link_to "Delete", bookmark_path(bookmark), method: :delete, remote: true %>
         <% end %>
-
-        <% if params[:controller] == "users" %>
-            <%= link_to "Unlike", bookmark_like_path(bookmark_id: bookmark.id), method: :delete %>
-        <% end %>
-
-        <% if params[:controller] == "topics" %>  <!--meaning you are looking at bookmarks-->
-            <%#= link_to [post, Favorite.new], class: 'btn btn-primary', method: :post do %>
-            <%= link_to "Like", bookmark_likes_path(bookmark_id: bookmark.id), method: :post %>
-        <% end %>
-
       </td>
+    </tr>
+
     </tr>
   </table>
+
 </li>
 

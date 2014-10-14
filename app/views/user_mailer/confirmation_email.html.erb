@@ -9,8 +9,11 @@
 <h1>Bookmark Added, <%= @user.name %></h1>
 <p>
   You have successfully added the link:
-  <%= @bookmark.topic.name %><br>
-  <%= @bookmark.url %>.<br>
+  Topic:        <%= @bookmark.topic.name %><br>
+  URL:          <%= @bookmark.url %><br>
+  Title:        <%= @bookmark.title %><br>
+  Description:  <%= @bookmark.description %><br>
+  Embed:        <%= @bookmark.embed %>
 </p>
 </body>
 </html>

@@ -1,11 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to @topic, class:'list-group-item' do %>
-    <%= @topic.name %>
-    <span class="badge"><%= @topic.bookmarks.count %></span>
-<% end %>
+<div class="topic-block">
+  <%= link_to @topic do %>
+      <h2><%= @topic.name.titleize %></h2>
+      <span class="badge pull-right"><%= @topic.bookmarks.count %></span>
+      <!--TODO - update badge counters with ajax-->
+  <% end %>
+</div>
 
-<%= link_to 'Back', topics_path %>
 <ul class="list-inline">
   <%= render @topic.bookmarks %>
 </ul>
+<%= link_to 'Back', topics_path %>

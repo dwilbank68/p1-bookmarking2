@@ -1,0 +1,8 @@
+<% if @like.valid? %>
+    $('#bookmark-' +<%= @bookmark.id %>).addClass('liked');
+    $('#unlike-' +<%= @bookmark.id %>).removeClass('hidden');
+    $('#like-' +<%= @bookmark.id %>).addClass('hidden');
+<% else %>
+    $('#bookmark-' +<%= @bookmark.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
+<% end %>
+

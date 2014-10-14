@@ -1,20 +1,40 @@
 class LikesController < ApplicationController
+  respond_to :html, :js
 
   def create
-    Like.create(
+    @like = Like.create(
         user_id:current_user.id,
         bookmark_id:params[:bookmark_id]
     )
-    redirect_to :back
+    @bookmark = Bookmark.find(params[:bookmark_id])
+    respond_with(@like) do |format|
+      format.html { redirect_to :back }
+    end
+
   end
 
   def destroy
-    unliked = Like.where(user_id:params[:id], bookmark_id:params[:bookmark_id])
-    unliked[0].destroy
-    puts "*"*30
-    puts params.inspect
-    puts "*"*30
-    redirect_to :back
+    @like = Like.where(user_id:params[:id], bookmark_id:params[:bookmark_id])
+    @bookmark_liked_id = params[:bookmark_id]
+    @bookmark = Bookmark.find(@bookmark_liked_id)
+    #authorize @like
+
+    if @like[0].destroy
+      flash[:notice] = "Like was deleted successfully."
+    else
+      flash[:error] = "There was an error deleting the like."
+    end
+
+    respond_with(@like[0]) do |format|
+      format.html { redirect_to :back }
+    end
   end
 
 end
+
+
+
+
+
+
+

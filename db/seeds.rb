@@ -104,6 +104,15 @@ me = User.new(
 # me.skip_confirmation! - since confirmation emails are turned off
 me.save!
 
+boss = User.new(
+    name:     'Boss',
+    email:    'dwilbank2@gmail.com',
+    password: '1aberath2',
+    role:     'admin'
+)
+# boss.skip_confirmation! - since confirmation emails are turned off
+boss.save!
+
 users = User.all
 
 15.times do
@@ -128,12 +137,24 @@ topics = Topic.all
 url_list.each do |url|
   bookmark = Bookmark.create!(
       user: users.sample,
-       topic: topics.sample,
-       url: url
+      topic: topics.sample,
+      url: url
   )
   bookmark.update_attributes!(created_at: rand(10.minutes .. 1.year).ago)
 end
 bookmarks = Bookmark.all
+
+embedly_api = Embedly::API.new :key => '8837e2d5c8d14881a505d2fe96f40076', :user_agent => 'Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)'
+embedly_obj = embedly_api.extract :url => params["stripped-text"]
+
+topic_name = params["subject"] == "" ? "Misc" : params["subject"]
+topic = Topic.find_or_create_by(:name => topic_name)
+email_user = User.find_by_email(params["sender"])
+bookmark = email_user.bookmarks.build(:url => params["stripped-text"],
+                                      :topic => topic,
+                                      :description => embedly_obj[0][:description],
+                                      :title => embedly_obj[0][:title])
+
 
 2000.times do
   Like.create(
