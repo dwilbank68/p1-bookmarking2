@@ -13,6 +13,7 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     @bookmarks = @topic.bookmarks
+    @current_user = current_user
   end
 
   # GET /topics/new

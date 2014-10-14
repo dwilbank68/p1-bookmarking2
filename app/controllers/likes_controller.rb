@@ -7,6 +7,7 @@ class LikesController < ApplicationController
         bookmark_id:params[:bookmark_id]
     )
     @bookmark = Bookmark.find(params[:bookmark_id])
+    @current_user = current_user
     respond_with(@like) do |format|
       format.html { redirect_to :back }
     end
