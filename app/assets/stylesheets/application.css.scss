@@ -2,18 +2,18 @@
 
 .user-info { margin-top: 9px; }
 .nav {
-  height: 50px;
-  background: -moz-linear-gradient(top, rgba(255,255,255,1) -1%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.53) 45%, rgba(89,89,89,0) 96%, rgba(76,76,76,0.01) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(-1%,rgba(255,255,255,1)), color-stop(0%,rgba(255,255,255,1)), color-stop(45%,rgba(255,255,255,0.53)), color-stop(96%,rgba(89,89,89,0)), color-stop(100%,rgba(76,76,76,0.01))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, rgba(255,255,255,1) -1%,rgba(255,255,255,1) 0%,rgba(255,255,255,0.53) 45%,rgba(89,89,89,0) 96%,rgba(76,76,76,0.01) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(255,255,255,1) -1%,rgba(255,255,255,1) 0%,rgba(255,255,255,0.53) 45%,rgba(89,89,89,0) 96%,rgba(76,76,76,0.01) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, rgba(255,255,255,1) -1%,rgba(255,255,255,1) 0%,rgba(255,255,255,0.53) 45%,rgba(89,89,89,0) 96%,rgba(76,76,76,0.01) 100%); /* IE10+ */
-  background: linear-gradient(to bottom, rgba(255,255,255,1) -1%,rgba(255,255,255,1) 0%,rgba(255,255,255,0.53) 45%,rgba(89,89,89,0) 96%,rgba(76,76,76,0.01) 100%); /* W3C */
+  height: 75px;
+  background: rgb(192,192,192);
+  background: -moz-linear-gradient(top, rgba(192,192,192,1) 0%, rgba(119,119,119,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(192,192,192,1)), color-stop(100%,rgba(119,119,119,1)));
+  background: -webkit-linear-gradient(top, rgba(192,192,192,1) 0%,rgba(119,119,119,1) 100%);
+  background: -o-linear-gradient(top, rgba(192,192,192,1) 0%,rgba(119,119,119,1) 100%);
+  background: -ms-linear-gradient(top, rgba(192,192,192,1) 0%,rgba(119,119,119,1) 100%);
+  background: linear-gradient(to bottom, rgba(192,192,192,1) 0%,rgba(119,119,119,1) 100%);
 }
 
 .topic-block {
-  background-color: #434343;
-  color: white;
+  background-color: #BBB;
   height: 60px;
   font-size: 275%;
   text-align: center;
@@ -26,17 +26,38 @@
 a {
   color: inherit;
 }
+
+// Bookmark styling
+
+li {
+  width: 280px;
+}
+
+.heavy-title {
+  font-weight: bold;
+}
+
+.description {
+  font-style: italic;
+  font-size: 75%;
+}
+
 table {
   border: solid;
   border-width: 3px;
   border-color: black;
-  width: 330px;
+}
+
+.like-unlike-delete a {
+  font-size: 75%;
+  font-weight: bold;
+  color: #BBB;
 }
 
 .liked {
   border: solid;
   border-width: 3px;
-  border-color: #d2ff0b;
+  border-color: #007411;
 }
 body { padding-top: 70px; }
 

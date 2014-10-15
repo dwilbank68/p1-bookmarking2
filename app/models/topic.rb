@@ -9,6 +9,7 @@ class Topic < ActiveRecord::Base
   default_scope {order('name')}
 
   def liked_bookmarks(cur_usr)
+    return nil unless cur_usr
     liked_bookmark_ids = cur_usr.likes.pluck(:bookmark_id)
     bookmarks.where(id:liked_bookmark_ids).order('created_at DESC')
   end

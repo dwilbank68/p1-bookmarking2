@@ -1,9 +1,14 @@
 <% if @bookmark.destroyed? %>
-    $('#bookmark-' +<%= @bookmark.id %>).hide();
+    // fade out the bookmark block itself
+    $('#bookmark-' +<%= @bookmark.id %>).fadeOut();
+    // decrement the badge counter on the topic bar
     $('a[href="/topics/<%= @bookmark.topic.id %>"]').find('span.total-bookmarks').text(<%= @bookmark.topic.bookmarks.count %>);
     <% if @bookmark.topic.bookmarks.count == 0 %>
         $('#topic-' +<%= @bookmark.topic.id %>).hide();
     <% end %>
+    //  updating the badges in the nav bar
+    $('#submissions').text(<%= current_user.bookmarks.count %>);
+    $('#likes').text(<%= current_user.likes.count %>);
 <% else %>
     $('#bookmark-' +<%= @bookmark.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
 <% end %>
