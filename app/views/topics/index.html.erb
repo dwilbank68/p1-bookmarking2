@@ -4,7 +4,7 @@
 <!--TODO url verification in bookmark model-->
     <% @topics.each do |topic| %>
     <!--<a href="<%#= topic_path(topic) %>" class="list-group-item"><%#= topic.name %><span class="badge"><%#= topic.bookmarks.count %></span></a>-->
-        <div class="topic-block">
+        <div class="topic-block" id="topic-<%= topic.id %>">
           <%= link_to topic do %>
               <div class="topic-name">
                 <%= topic.name.titleize if topic.name %>

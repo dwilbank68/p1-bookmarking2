@@ -21,7 +21,7 @@ class LikesController < ApplicationController
     #authorize @like
 
     if @like[0].destroy
-      flash[:notice] = "Like was deleted successfully."
+      skip_the_annoying_flash = true
     else
       flash[:error] = "There was an error deleting the like."
     end

@@ -2,7 +2,11 @@
     $('#bookmark-' +<%= @bookmark.id %>).addClass('liked');
     $('#unlike-' +<%= @bookmark.id %>).removeClass('hidden');
     $('#like-' +<%= @bookmark.id %>).addClass('hidden');
+    //  updating the bookmarks count in the topics bar
+    $('a[href="/topics/<%= @bookmark.topic.id %>"]').find('span.liked-bookmarks').text(<%= @bookmark.topic.liked_bookmarks(current_user).count %>);
 <% else %>
     $('#bookmark-' +<%= @bookmark.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
 <% end %>
+
+
 

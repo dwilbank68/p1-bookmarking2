@@ -1,19 +1,18 @@
 <!-- @liked_topics from users/_show.html.erb -->
 
-<div class="topic-block">
+<% visible_bookmarks = topic.liked_bookmarks(current_user) %>
+
+<div class="topic-block" id="topic-<%= topic.id %>">
   <%= link_to topic do %>
       <h2><%= topic.name.titleize %></h2>
-      <span class="badge pull-right"><%= topic.liked_bookmarks(current_user).count %></span>
-      <!--TODO - update badge counters with ajax-->
+      <span class="badge pull-right liked-bookmarks"><%= visible_bookmarks.count %></span>
+      <span class="badge pull-right total-bookmarks hidden"><%= topic.bookmarks.count %></span>
   <% end %>
 </div>
 
 <ul class="list-inline">
-  <%= render topic.liked_bookmarks(current_user) %>
+  <%= render visible_bookmarks %>
 </ul>
-
-
-
 
 <!-- @bookmarks to views/bookmarks/_bookmark.html.erb -->
 

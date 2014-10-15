@@ -1,7 +1,11 @@
+// Get context for what badge count will show. liked bookmarks in topic, or total bookmarks in topic
+//<#% badge_number = ? @bookmark.topic.bookmarks.count : @bookmark.topic.liked_bookmarks(current_user).count %>
 <% if @like[0].destroyed? %>
     $('#bookmark-' +<%= @bookmark.id %>).removeClass('liked');
     $('#unlike-' +<%= @bookmark.id %>).addClass('hidden');
     $('#like-' +<%= @bookmark.id %>).removeClass('hidden');
+    //  updating the bookmarks count in the topics bar
+    $('a[href="/topics/<%= @bookmark.topic.id %>"]').find('span.liked-bookmarks').text(<%= @bookmark.topic.liked_bookmarks(current_user).count %>);
 <% else %>
     $('#bookmark-' +<%= @bookmark.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
 <% end %>

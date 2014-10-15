@@ -55,7 +55,7 @@ class TopicsController < ApplicationController
   # DELETE /topics/1.json
   def destroy
     if @topic.destroy
-      redirect_to :back, notice: 'Topic was successfully destroyed.'
+      redirect_to :back
     else
       redirect_to :back, notice: 'Topic cannot be destroyed. Still has bookmarks.'
     end
