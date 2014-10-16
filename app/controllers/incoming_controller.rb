@@ -6,8 +6,9 @@ class IncomingController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: [:create]
 
   def create
-
-    embedly_api = Embedly::API.new :key => '8837e2d5c8d14881a505d2fe96f40076', :user_agent => 'Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)'
+    embedly_key = '8837e2d5c8d14881a505d2fe96f40076'
+    embedly_user_agent = 'Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)'
+    embedly_api = Embedly::API.new :key => embedly_key, :user_agent => embedly_user_agent
     embedly_obj = embedly_api.extract :url => params["stripped-text"]
 
     topic_name = params["subject"] == "" ? "Misc" : params["subject"]
@@ -27,15 +28,12 @@ class IncomingController < ApplicationController
 
     if bookmark.save
         Like.create(:bookmark_id => bookmark.id,
-                    :user_id => email_user.id,
-        )
+                    :user_id => email_user.id )
         UserMailer.confirmation_email(email_user, bookmark).deliver
-       render :nothing => true
+        render :nothing => true
     else
-      puts "*"*30
-      puts "failure"
-      puts "*"*30
-      UserMailer.rejection_email(email_user, bookmark).deliver
+        UserMailer.rejection_email(email_user, bookmark).deliver
+        render :nothing => true
    end
   end
 end

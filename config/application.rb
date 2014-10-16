@@ -1,4 +1,4 @@
-  require File.expand_path('../boot', __FILE__)
+require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
@@ -11,7 +11,7 @@ module P1Bookmarking
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-
+    config.autoload_paths += %W["#{config.root}/app/validators/"] # added because of custom url_validator
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
