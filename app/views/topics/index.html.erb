@@ -2,7 +2,6 @@
 
 <h3>All Topics</h3>
 
-<!--TODO url verification in bookmark model-->
     <% @topics.each do |topic| %>
         <% visible_bookmarks = topic.liked_bookmarks(current_user) %>
         <!--<a href="<%#= topic_path(topic) %>" class="list-group-item"><%#= topic.name %><span class="badge"><%#= topic.bookmarks.count %></span></a>-->

@@ -1,0 +1,18 @@
+{
+  "name": "Bookmarking",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dwilbank68/p1-bookmarking2",
+  "authors": [
+    "David Wilbanks <dwilbank@gmail.com>"
+  ],
+  "description": "Independent Project #1",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ]
+}

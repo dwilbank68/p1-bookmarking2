@@ -38,6 +38,3 @@ class IncomingController < ApplicationController
   end
 end
 
-# validates :url, :presence => true, :length => { :minimum =>2, :maximum => 255 }
-# validates :topic, presence: true
-# validates :user, presence: true
