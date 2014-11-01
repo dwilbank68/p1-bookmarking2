@@ -8,6 +8,7 @@ class UsersController < ApplicationController
       @current_user = current_user
       @liked_topics = Topic.where(id:liked_topic_ids).order('topics.name')
         # this jumps straight to topics/_topic.html.erb instead of topics/show.html.erb
+      @liked_bookmarks = liked_bookmarks # this is an un-sorted test array just to get masonry working
     else
        redirect_to current_user, notice: "Stick to your own page"
     end

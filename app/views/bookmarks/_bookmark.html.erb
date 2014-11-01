@@ -1,6 +1,6 @@
 <!-- @bookmarks from topics/_topic.html.erb -->
 
-<li>
+<div class="item">
 
   <table class="table table-condensed <%= bookmark.liked?(@current_user,bookmark) %>" id="bookmark-<%= bookmark.id %>">
     <% if bookmark.title %>
@@ -28,7 +28,7 @@
     <!--</tr>-->
     <% if bookmark.embed %>
         <tr>
-          <td>  <%= bookmark.embed.html_safe if bookmark.embed%></td>
+          <td class="embed">  <%= bookmark.embed.html_safe if bookmark.embed%></td>
         </tr>
     <% end %>
     <tr>
@@ -58,4 +58,4 @@
 
   </table>
 
-</li>
+</div>

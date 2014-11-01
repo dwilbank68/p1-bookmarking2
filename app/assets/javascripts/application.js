@@ -12,7 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+
 //= require bootstrap
 //= require jquery.masonry.min.js
 //= require_tree .
+
+
+$(document).ready(function() {
+    console.log("loaded sir");
+    $('#content').masonry({
+        columnWidth: 320,
+        itemSelector: '.item'
+    }).imagesLoaded(function() {
+        $('#content').masonry('reload');
+    });
+});

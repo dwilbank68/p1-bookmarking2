@@ -2,7 +2,7 @@
 
 .user-info { margin-top: 9px; }
 .nav {
-  height: 75px;
+  height: 65px;
   background: rgb(192,192,192);
   background: -moz-linear-gradient(top, rgba(192,192,192,1) 0%, rgba(119,119,119,1) 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(192,192,192,1)), color-stop(100%,rgba(119,119,119,1)));
@@ -42,16 +42,27 @@ li {
   font-size: 75%;
 }
 
+.item {
+
+}
+
 table {
   border: solid;
   border-width: 3px;
   border-color: black;
+  max-width: 300px;
 }
+
 
 .like-unlike-delete a {
   font-size: 75%;
   font-weight: bold;
   color: #BBB;
+}
+
+img {
+  width:280px;
+
 }
 
 .liked {
@@ -62,8 +73,7 @@ table {
 body { padding-top: 70px; }
 
 .embedly-embed {
-  width: 320px;
-  height: 240px;
+  width: 280px;
 }
 
 .hidden { visibility: hidden }

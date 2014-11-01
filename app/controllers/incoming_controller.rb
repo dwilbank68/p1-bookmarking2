@@ -6,10 +6,11 @@ class IncomingController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: [:create]
 
   def create
+    # https://github.com/embedly/embedly-ruby
     embedly_key = '8837e2d5c8d14881a505d2fe96f40076'
     embedly_user_agent = 'Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)'
     embedly_api = Embedly::API.new :key => embedly_key, :user_agent => embedly_user_agent
-    embedly_obj = embedly_api.extract :url => params["stripped-text"]
+    embedly_obj = embedly_api.extract( :url => params["stripped-text"], :maxwidth => 280 )
 
     topic_name = params["subject"] == "" ? "Misc" : params["subject"]
     topic = Topic.find_or_create_by(:name => topic_name)
@@ -24,6 +25,7 @@ class IncomingController < ApplicationController
                                           :description => description,
                                           :title => title,
                                           :embed => embed)
+                                          #:embed => '<img src="http://www.popsci.com/sites/popsci.com/files/styles/article_image_big/public/J-31%2001.jpg?itok=Np8wtPrB">')
 
 
     if bookmark.save
