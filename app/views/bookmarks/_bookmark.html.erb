@@ -4,32 +4,16 @@
 
   <table class="table table-condensed <%= bookmark.liked?(@current_user,bookmark) %>" id="bookmark-<%= bookmark.id %>">
     <% if bookmark.title %>
-        <tr><td class="heavy-title"><%= bookmark.title %></td></tr>
+        <th class="heavy-title" colspan="2"><%= bookmark.title %></th>
     <% end %>
-    <tr>
-      <td class="url"><a href="<%= bookmark.url %>"><%= bookmark.url.truncate(30) %></a></td>
-    </tr>
+    <tr> <td class="url" colspan="2"><a href="<%= bookmark.url %>"><%= bookmark.url.truncate(30) %></a></td> </tr>
 
     <% if bookmark.description %>
-        <tr>
-          <td class="description"><%= bookmark.description %></td>
-        </tr>
+        <tr> <td class="description" colspan="2"><%= bookmark.description %></td> </tr>
     <% end %>
 
-    <!--<tr>-->
-      <!--<td>-->
-        <!--<small>This is the bookmark.id  <%= bookmark.id %></small>-->
-      <!--</td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-      <!--<td>-->
-        <!--<small>Created by <%#= bookmark.user_id %></small>-->
-      <!--</td>-->
-    <!--</tr>-->
     <% if bookmark.embed %>
-        <tr>
-          <td class="embed">  <%= bookmark.embed.html_safe if bookmark.embed%></td>
-        </tr>
+        <tr> <td class="embed" colspan="2">  <%= bookmark.embed.html_safe if bookmark.embed%></td> </tr>
     <% end %>
     <tr>
 
@@ -37,15 +21,14 @@
         <% if current_user %>
             <% if bookmark.liked?(@current_user,bookmark) == 'liked'%>
                 <%= link_to "UNLIKE", bookmark_like_path( bookmark_id: bookmark.id, id:      current_user.id), id:"unlike-#{bookmark.id}",method: :delete, remote: true %>
-                <%= link_to "LIKE",   bookmark_likes_path(bookmark_id: bookmark.id, user_id: current_user.id), class:"hidden", id:"like-#{bookmark.id}",method: :post,   remote: true %>
+                <%#= link_to "LIKE",   bookmark_likes_path(bookmark_id: bookmark.id, user_id: current_user.id), class:"hidden", id:"like-#{bookmark.id}",method: :post,   remote: true %>
             <% else %>
-                <%= link_to "UNLIKE", bookmark_like_path( bookmark_id: bookmark.id, id:      current_user.id), class:"hidden", id:"unlike-#{bookmark.id}",method: :delete, remote: true %>
+                <%#= link_to "UNLIKE", bookmark_like_path( bookmark_id: bookmark.id, id:      current_user.id), class:"hidden", id:"unlike-#{bookmark.id}",method: :delete, remote: true %>
                 <%= link_to "LIKE",   bookmark_likes_path(bookmark_id: bookmark.id, user_id: current_user.id), id:"like-#{bookmark.id}",method: :post,   remote: true %>
             <% end %>
         <% end %>
       </td>
-    </tr>
-    <tr>
+
       <td class="like-unlike-delete">
         <% if current_user %>
             <% if policy(bookmark).destroy? %>
