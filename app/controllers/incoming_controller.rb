@@ -1,5 +1,6 @@
 class IncomingController < ApplicationController
-
+  require 'net/http'
+  require 'net/smtp'
   require 'embedly'
   require 'json'
   # http://stackoverflow.com/questions/1177863/how-do-i-ignore-the-authenticity-token-for-specific-actions-in-rails
@@ -7,23 +8,42 @@ class IncomingController < ApplicationController
 
   def create
     # https://github.com/embedly/embedly-ruby
-    embedly_key = '8837e2d5c8d14881a505d2fe96f40076'
-    embedly_user_agent = 'Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)'
-    embedly_api = Embedly::API.new :key => embedly_key, :user_agent => embedly_user_agent
-    embedly_obj = embedly_api.extract( :url => params["stripped-text"], :maxwidth => 280 )
+    url = params["stripped-text"]
+    #url = "http://lifehacker.com";
+    #call_embedly(url)
+
+    embedly_key = '8837e2d5c8d14881a505d2fe96f40076';
+    embedly_user_agent = 'Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)';
+    embedly_api = Embedly::API.new :key => embedly_key, :user_agent => embedly_user_agent;
+    embedly_obj = embedly_api.extract( :url => url, :maxwidth => 280 );
+    embedly_obj = embedly_obj[0]
+
+    base = "http://api.embed.ly/1/oembed?url=";
+    # url = "http://popsci.com";
+    safe_url = CGI.escape(url);
+    res = Net::HTTP.get_response(URI.parse(base + safe_url));
+    # unless res.response.msg == "OK";
+    #   record.errors[:url] << 'url is invalid';
+    # end;
+    embedly_json = JSON.parse(res.body)
+    thumbnail_url = embedly_json["thumbnail_url"];
+    # puts thumbnail_url;
+
+
 
     topic_name = params["subject"] == "" ? "Misc" : params["subject"]
     topic = Topic.find_or_create_by(:name => topic_name)
     email_user = User.find_by_email(params["sender"])
 
-    description = embedly_obj[0][:description]
-    title = embedly_obj[0][:title]
+    description = embedly_obj[:description]
+    title = embedly_obj[:title]
     title = nil if title == description # if title and description come out identical, make title nil
-    embed = embedly_obj[0][:media][:html]
-    bookmark = email_user.bookmarks.build(:url => params["stripped-text"],
+    embed = embedly_obj[:media][:html]
+    bookmark = email_user.bookmarks.build(:url => url,
                                           :topic => topic,
                                           :description => description,
                                           :title => title,
+                                          :thumbnail => thumbnail_url,
                                           :embed => embed)
                                           #:embed => '<img src="http://www.popsci.com/sites/popsci.com/files/styles/article_image_big/public/J-31%2001.jpg?itok=Np8wtPrB">')
 
@@ -39,4 +59,6 @@ class IncomingController < ApplicationController
    end
   end
 end
+
+# "thumbnail_url":"([^"]*)"
 

@@ -13,7 +13,9 @@
     <% end %>
 
     <% if bookmark.embed %>
-        <tr> <td class="embed" colspan="2">  <%= bookmark.embed.html_safe if bookmark.embed%></td> </tr>
+        <tr> <td class="embed"     colspan="2"> <%= bookmark.embed.html_safe if bookmark.embed%> </td> </tr>
+    <% elsif bookmark.thumbnail %>
+        <tr> <td class="thumbnail" colspan="2"><img src="<%= bookmark.thumbnail if bookmark.thumbnail%>" alt="thumbnail fail"/> </td> </tr>
     <% end %>
     <tr>
 
@@ -21,9 +23,9 @@
         <% if current_user %>
             <% if bookmark.liked?(@current_user,bookmark) == 'liked'%>
                 <%= link_to "UNLIKE", bookmark_like_path( bookmark_id: bookmark.id, id:      current_user.id), id:"unlike-#{bookmark.id}",method: :delete, remote: true %>
-                <%#= link_to "LIKE",   bookmark_likes_path(bookmark_id: bookmark.id, user_id: current_user.id), class:"hidden", id:"like-#{bookmark.id}",method: :post,   remote: true %>
+                <%= link_to "LIKE",   bookmark_likes_path(bookmark_id: bookmark.id, user_id: current_user.id), class:"hidden", id:"like-#{bookmark.id}",method: :post,   remote: true %>
             <% else %>
-                <%#= link_to "UNLIKE", bookmark_like_path( bookmark_id: bookmark.id, id:      current_user.id), class:"hidden", id:"unlike-#{bookmark.id}",method: :delete, remote: true %>
+                <%= link_to "UNLIKE", bookmark_like_path( bookmark_id: bookmark.id, id:      current_user.id), class:"hidden", id:"unlike-#{bookmark.id}",method: :delete, remote: true %>
                 <%= link_to "LIKE",   bookmark_likes_path(bookmark_id: bookmark.id, user_id: current_user.id), id:"like-#{bookmark.id}",method: :post,   remote: true %>
             <% end %>
         <% end %>
