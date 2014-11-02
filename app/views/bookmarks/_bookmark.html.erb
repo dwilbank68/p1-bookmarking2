@@ -15,7 +15,11 @@
     <% if bookmark.embed %>
         <tr> <td class="embed"     colspan="2"> <%= bookmark.embed.html_safe if bookmark.embed%> </td> </tr>
     <% elsif bookmark.thumbnail %>
-        <tr> <td class="thumbnail" colspan="2"><img src="<%= bookmark.thumbnail if bookmark.thumbnail%>" alt="thumbnail fail"/> </td> </tr>
+        <tr>
+          <td class="embed" colspan="2" >
+            <img src="<%= bookmark.thumbnail if bookmark.thumbnail%>" alt="thumbnail fail"/>
+          </td>
+        </tr>
     <% end %>
     <tr>
 
