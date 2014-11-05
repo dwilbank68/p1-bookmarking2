@@ -1,6 +1,8 @@
 require 'faker'
 require 'embedly'
 require 'json'
+require 'net/http'
+require 'net/smtp'
 
 url_list = ["http://www.cifs.dk",
             "http://www.corante.com",
@@ -33,21 +35,17 @@ url_list = ["http://www.cifs.dk",
             "http://www.innovationwatch.com",
             "http://www.innovic.com.au",
             "http://www.whatifinnovation.com",
-            "http://www.zerogravitythinker.com",
             "http://www.innotown.com",
             "http://www.intelligencesquared.com",
             "http://www.instituteofideas.com",
             "http://www.forum-21.com",
-            "http://www.nightwithafuturist.com",
             "http://www.parc.com",
             "http://www.rsa.org.uk",
             "http://www.sydneytalks.com.au",
             "http://www.ted.com",
             "http://www.austhink.org/",
-            "http://www.blogpulse.com",
             "http://www.extendlimits.nl",
             "http://www.eurasiagroup.net",
-            "http://www.goldmansachs.com/ideas",
             "http://www.pfcenergy.com",
             "http://www.squidoo.com",
             "http://eurasiagroup.net",
@@ -68,7 +66,6 @@ url_list = ["http://www.cifs.dk",
             "http://money.cnn.com/magazines/business2/",
             "http://www.newscientist.com",
             "http://www.newyorker.com",
-            "http://www.nni.nikkei.co.jp",
             "http://www.nytimes.com",
             "http://www.observer.co.uk",
             "http://www.prospectmagazine.co.uk",
@@ -122,6 +119,8 @@ users = User.all
       name: Faker::Lorem.word,
   )
 end
+color = topic.color_topic(topic.id)
+topic.update_attributes(color:color)
 topics = Topic.all
 
 # bookmark_num = 1
@@ -142,13 +141,23 @@ url_list.each do |url|
   embedly_api = Embedly::API.new :key => '8837e2d5c8d14881a505d2fe96f40076', :user_agent => 'Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)'
   embedly_obj = embedly_api.extract :url => url
   embed = embedly_obj[0][:media][:html]
+
+  base = "http://api.embed.ly/1/oembed?url=";
+  safe_url = CGI.escape(url);
+  res = Net::HTTP.get_response(URI.parse(base + safe_url));
+  embedly_json = JSON.parse(res.body)
+  thumbnail_url = embedly_json["thumbnail_url"];
+
+
+
   bookmark = user.bookmarks.build(:url => url,
                                   :topic => topic,
                                   :description => embedly_obj[0][:description],
                                   :title => embedly_obj[0][:title],
+                                  :thumbnail => thumbnail_url,
                                   :embed => embed)
   bookmark.update_attributes!(created_at: rand(10.minutes .. 1.year).ago)
-  bookmark.save!
+  bookmark.save
 end
 bookmarks = Bookmark.all
 

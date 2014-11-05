@@ -2,9 +2,14 @@
 
 <div class="item">
 
-  <table class="table table-condensed <%= bookmark.liked?(@current_user,bookmark) %>" id="bookmark-<%= bookmark.id %>">
+  <table class="table table-condensed table-curved bookmark-<%= bookmark.topic.color %> <%= bookmark.liked?(@current_user,bookmark) %>" id="bookmark-<%= bookmark.id %>">
+    <tr>
+      <td class="topic <%= bookmark.topic.color %>" id="topic-<%= bookmark.topic.id %>" colspan="2" >
+        <%= link_to bookmark.topic.name, topic_path(bookmark.topic) %>
+      </td>
+    </tr>
     <% if bookmark.title %>
-        <th class="heavy-title" colspan="2"><%= bookmark.title %></th>
+        <td class="heavy-title" colspan="2"><%= bookmark.title %></td>
     <% end %>
     <tr> <td class="url" colspan="2"><a href="<%= bookmark.url %>"><%= bookmark.url.truncate(30) %></a></td> </tr>
 
@@ -25,7 +30,7 @@
 
       <td class="like-unlike-delete">
         <% if current_user %>
-            <% if bookmark.liked?(@current_user,bookmark) == 'liked'%>
+            <% if bookmark.liked?(@current_user,bookmark)['liked']%>
                 <%= link_to "UNLIKE", bookmark_like_path( bookmark_id: bookmark.id, id:      current_user.id), id:"unlike-#{bookmark.id}",method: :delete, remote: true %>
                 <%= link_to "LIKE",   bookmark_likes_path(bookmark_id: bookmark.id, user_id: current_user.id), class:"hidden", id:"like-#{bookmark.id}",method: :post,   remote: true %>
             <% else %>

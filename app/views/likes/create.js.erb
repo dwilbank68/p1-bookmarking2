@@ -1,14 +1,16 @@
+
+
 <% if @like.valid? %>
-    $('#bookmark-' +<%= @bookmark.id %>).addClass('liked');
+    console.log('create.js.erb called and @like.valid? is true');
+    $('#bookmark-' +<%= @bookmark.id %>).addClass('liked-'+'<%= @bookmark.topic.color %>');
     $('#unlike-' +<%= @bookmark.id %>).removeClass('hidden');
     $('#like-' +<%= @bookmark.id %>).addClass('hidden');
-    //  updating the bookmarks count in the corresponding topics bar
-    $('a[href="/topics/<%= @bookmark.topic.id %>"]').find('span.liked-bookmarks').text(<%= @bookmark.topic.liked_bookmarks(current_user).count %>);
-    //  updating the badges in the nav bar
+
     $('#submissions').text(<%= current_user.bookmarks.count %>);
     $('#likes').text(<%= current_user.likes.count %>);
 <% else %>
-    $('#bookmark-' +<%= @bookmark.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
+    alert('@like was not valid');
+    //$('#bookmark-' +<%#= @bookmark.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
 <% end %>
 
 

@@ -1,17 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<div class="topic-block" id="topic-<%= @topic.id %>">
-
-  <%= link_to @topic do %>
-      <h2><%= @topic.name.titleize %></h2>
-      <% if current_user %>
-        <span class="badge pull-right total-bookmarks"><%= @topic.bookmarks.count %></span>
-        <span class="badge pull-right liked-bookmarks hidden"><%= @topic.liked_bookmarks(current_user).count %></span>
-      <% end %>
-  <% end %>
+<div id="content">
+  <ul class="list-inline">
+    <%= render @topic.bookmarks %>
+  </ul>
+  <%= link_to 'Back', bookmarks_path %>
 </div>
-
-<ul class="list-inline">
-  <%= render @topic.bookmarks %>
-</ul>
-<%= link_to 'Back', topics_path %>

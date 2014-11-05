@@ -19,11 +19,13 @@
 
 
 $(document).ready(function() {
-    console.log("loaded sir");
+//    console.log("loaded sir");
     $('#content').masonry({
         columnWidth: 320,
         itemSelector: '.item'
     }).imagesLoaded(function() {
         $('#content').masonry('reload');
     });
+
 });
+

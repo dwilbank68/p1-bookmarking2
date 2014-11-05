@@ -21,6 +21,14 @@ class Topic < ActiveRecord::Base
     end
   end
 
+  def color_topic(idx) # distributes color-1 thru color-5 equally through all topics
+    if idx % 5 == 0
+      return "color-5"
+    else
+      return "color-#{idx % 5}"
+    end
+  end
+
 end
 
 #liked_bookmark_ids = current_user.likes.pluck(:bookmark_id)

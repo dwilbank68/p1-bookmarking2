@@ -1,14 +1,17 @@
-// Get context for what badge count will show. liked bookmarks in topic, or total bookmarks in topic
-//<#% badge_number = ? @bookmark.topic.bookmarks.count : @bookmark.topic.liked_bookmarks(current_user).count %>
-<% if @like[0].destroyed? %>
-    $('#bookmark-' +<%= @bookmark.id %>).removeClass('liked');
+console.log("destroy.js.erb called")
+
+
+<% if @like[0].destroyed? %> // hide the 'unlike' link and reveal the 'like' link
+    console.log("and @like[0] was destroyed")
+    $('#bookmark-' +<%= @bookmark.id %>).removeClass('liked-color-1 liked-color-2 liked-color-3 liked-color-4 liked-color-5');
     $('#unlike-' +<%= @bookmark.id %>).addClass('hidden');
     $('#like-' +<%= @bookmark.id %>).removeClass('hidden');
-    $('a[href="/topics/<%= @bookmark.topic.id %>"]').find('span.liked-bookmarks').text(<%= @bookmark.topic.liked_bookmarks(current_user).count %>);
-    //  updating the bookmarks count in the corresponding topics bar
+
     //  updating the badges in the nav bar
     $('#submissions').text(<%= current_user.bookmarks.count %>);
     $('#likes').text(<%= current_user.likes.count %>);
+
 <% else %>
-    $('#bookmark-' +<%= @bookmark.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
+    alert('@like[0].destroyed? was false');
+    //$('#bookmark-' +<%#= @bookmark.id %>).prepend("<div class='alert alert-error'><%#= flash[:error] %></div>");
 <% end %>

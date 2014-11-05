@@ -4,15 +4,20 @@
   <title>Bookmarking</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  <link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <div class="container">
-  <ul class="container nav nav-tabs navbar-fixed-top">
+  <ul class="nav nav-tabs navbar-inverse navbar-fixed-top">
     <li><%#= link_to "Bloccit", root_path %></li>
     <li><%#= link_to "About", about_path %></li>
-    <li><%= link_to "All Topics", topics_path %></li>
-    <li><%= mail_to "postmaster@app30409245.mailgun.org", "+" %></li>
+    <li><%= link_to "All Bookmarks", bookmarks_path %></li>
+    <li>
+      <%= mail_to "postmaster@app30409245.mailgun.org" do %>
+          <p>Mail in a new URL <span class="glyphicon glyphicon-plus"></span></p>
+      <% end %>
+    </li>
 
     <li><%#= link_to "Popular", posts_path %></li>
     <li><%#= link_to "Users", users_path %></li>
@@ -54,9 +59,9 @@
       </div>
   <% end %>
 
-  <%= yield %>
+  <%#= yield %>
 </div><!-- end .container-->
-
+    <%= yield %>
 
 </body>
 </html>

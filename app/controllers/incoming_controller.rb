@@ -33,6 +33,8 @@ class IncomingController < ApplicationController
 
     topic_name = params["subject"] == "" ? "Misc" : params["subject"]
     topic = Topic.find_or_create_by(:name => topic_name)
+    color = topic.color_topic(topic.id)
+    topic.update_attributes(color:color)
     email_user = User.find_by_email(params["sender"])
 
     description = embedly_obj[:description]
@@ -58,6 +60,9 @@ class IncomingController < ApplicationController
         render :nothing => true
    end
   end
+
+
+
 end
 
 # "thumbnail_url":"([^"]*)"

@@ -8,6 +8,7 @@ group :production do
 end
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'rspec-rails', '~> 3.1.0'
   gem 'capybara', '~> 2.3.0'
   gem 'selenium-webdriver'
