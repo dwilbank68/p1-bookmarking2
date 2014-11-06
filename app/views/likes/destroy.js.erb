@@ -4,9 +4,9 @@
 
 <% if @like[0].destroyed? %> // hide the 'unlike' link and reveal the 'like' link
     console.log("and @like[0] was destroyed");
-    $('#bookmark-' +<%= @bookmark.id %>).removeClass('liked-color-0 liked-color-1 liked-color-2 liked-color-3 liked-color-4');
-    $('#unlike-' +<%= @bookmark.id %>).addClass('hidden');
-    $('#like-' +<%= @bookmark.id %>).removeClass('hidden');
+    $('#bookmark-' + '<%= @bookmark.id %>').removeClass('liked-color-0 liked-color-1 liked-color-2 liked-color-3 liked-color-4');
+    $('#unlike-'   + '<%= @bookmark.id %>').toggleClass('hidden');
+    $('#like-'     + '<%= @bookmark.id %>').toggleClass('hidden');
 
     //  updating the badges in the nav bar
     $('#submissions').text(<%= current_user.bookmarks.count %>);

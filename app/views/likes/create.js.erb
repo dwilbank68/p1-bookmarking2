@@ -1,16 +1,15 @@
-
-
+console.log('create.js.erb has been called on #bookmark <%= @bookmark.id %>');
 <% if @like.valid? %>
-    console.log('create.js.erb called and @like.valid? is true');
-    $('#bookmark-' +<%= @bookmark.id %>).addClass('liked-'+'<%= @bookmark.topic.color %>');
-    $('#unlike-' +<%= @bookmark.id %>).removeClass('hidden');
-    $('#like-' +<%= @bookmark.id %>).addClass('hidden');
+    console.log('and @like.valid? is true');
+    $('#bookmark-' + '<%= @bookmark.id %>').toggleClass('liked-' + '<%= @bookmark.topic.color %>');
+    $('#unlike-'   + '<%= @bookmark.id %>').toggleClass('hidden');//removeClass('hidden');
+    $('#like-'     + '<%= @bookmark.id %>').toggleClass('hidden');//addClass('hidden');
 
     $('#submissions').text(<%= current_user.bookmarks.count %>);
     $('#likes').text(<%= current_user.likes.count %>);
 <% else %>
-    //alert('@like was not valid');
-    $('#bookmark-' +<%= @bookmark.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
+    alert('something went bad');
+    //$('#bookmark-' +<%= @bookmark.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
 <% end %>
 
 
