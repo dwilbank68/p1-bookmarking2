@@ -78,27 +78,16 @@ table {
   border-top-right-radius: 5px;
 }
 
-
-//.bookmark-color-1 { background-color:black; color: #ffe6e6; }
-//.bookmark-color-2 { background-color:black; color: #ffe3e1; }
-//.bookmark-color-3 { background-color:black; color: #fff5de; }
-//.bookmark-color-4 { background-color:black; color: #ffdecc; }
-//.bookmark-color-5 { background-color:black; color: #fffecc; }
-//.color-1 { background-color: #2B0000; color:#FFFA00 ; }
-//.color-2 { background-color: #F21100; color:#FFFA00 ; }
-//.color-3 { background-color: #ECA703; color:#2B0000 ; }
-//.color-4 { background-color: #FF5900; color:#2B0000 ; }
-//.color-5 { background-color: #FFFA00; color:#2B0000 ; }
-.bookmark-color-1 { background-color:black; color: #ffe6e6; }
-.bookmark-color-2 { background-color:black; color: #ffe3e1; }
-.bookmark-color-3 { background-color:black; color: #fff5de; }
-.bookmark-color-4 { background-color:black; color: #ffdecc; }
-.bookmark-color-5 { background-color:black; color: #fffecc; }
-.color-1 { background-color: #1EB537; color:white ; }
-.color-2 { background-color: #A9CB1C; color:white ; }
-.color-3 { background-color: #E82170; color:white ; }
-.color-4 { background-color: #73269F; color:white ; }
-.color-5 { background-color: #2181C7; color:white ; }
+.bookmark-color-0 { background-color:black; color: #ffe6e6; }
+.bookmark-color-1 { background-color:black; color: #ffe3e1; }
+.bookmark-color-2 { background-color:black; color: #fff5de; }
+.bookmark-color-3 { background-color:black; color: #ffdecc; }
+.bookmark-color-4 { background-color:black; color: #fffecc; }
+.color-0 { background-color: #1EB537; color:white ; }
+.color-1 { background-color: #A9CB1C; color:white ; }
+.color-2 { background-color: #E82170; color:white ; }
+.color-3 { background-color: #73269F; color:white ; }
+.color-4 { background-color: #2181C7; color:white ; }
 
 .like-unlike-delete a {
   font-size: 75%;
@@ -110,7 +99,7 @@ img {
   width:280px;
 }
 
-.liked-color-1 {
+.liked-color-0 {
   -webkit-box-shadow: 0px -1px 10px 4px rgba(30,181,55,0.55),
                 inset 0px -1px 10px 4px rgba(30,181,55,0.55);
   -moz-box-shadow:    0px -1px 10px 4px rgba(30,181,55,0.55),
@@ -123,7 +112,7 @@ img {
 
 }
 
-.liked-color-2 {
+.liked-color-1 {
   -webkit-box-shadow: 0px -1px 10px 4px rgba(169,203,28,0.55),
                 inset 0px -1px 10px 4px rgba(169,203,28,0.55);
   -moz-box-shadow:    0px -1px 10px 4px rgba(169,203,28,0.55),
@@ -135,7 +124,7 @@ img {
                       0px  2px 7px      rgba(169,203,28, 1);
 }
 
-.liked-color-3 {
+.liked-color-2 {
   -webkit-box-shadow: 0px -1px 10px 4px rgba(232,33,132,0.55),
                 inset 0px -1px 10px 4px rgba(232,33,132,0.55);
   -moz-box-shadow:    0px -1px 10px 4px rgba(232,33,132,0.55),
@@ -147,7 +136,7 @@ img {
                       0px  2px  7px     rgba(232,33,132, 1);
 }
 
-.liked-color-4 {
+.liked-color-3 {
   -webkit-box-shadow: 0px  0px 43px 3px rgba(115,38,159,1),
                 inset 0px  0px 43px 3px rgba(115,38,159,1);
   -moz-box-shadow:    0px  0px 43px 3px rgba(115,38,159,1),
@@ -160,7 +149,7 @@ img {
 
 }
 
-.liked-color-5 {
+.liked-color-4 {
   -webkit-box-shadow: 0px -1px 10px 4px rgba(33,129,199,0.55),
                 inset 0px -1px 10px 4px rgba(33,129,199,0.55);
   -moz-box-shadow:    0px -1px 10px 4px rgba(33,129,199,0.55),

@@ -21,12 +21,14 @@ class Topic < ActiveRecord::Base
     end
   end
 
-  def color_topic(idx) # distributes color-1 thru color-5 equally through all topics
-    if idx % 5 == 0
-      return "color-5"
-    else
-      return "color-#{idx % 5}"
-    end
+  # def color_topic(topic) # distributes color-0 thru color-4 equally through all topics
+  #   puts topic.id
+  #     "color-#{topic.id % 5}"
+  # end
+
+  def color_topic # distributes color-0 thru color-4 equally through all topics
+    puts self.id
+    "color-#{self.id % 5}"
   end
 
 end

@@ -28,7 +28,6 @@ url_list = ["http://www.cifs.dk",
             "http://www.wfs.org",
             "http://www.williamsinference.com",
             "http://www.futureshouse.eu",
-            "http://www.futureexploration.net",
             "http://www.futureshouse.com",
             "http://www.outsights.co.uk",
             "http://www.imaginatik.com",
@@ -122,9 +121,10 @@ users = User.all
   topic = Topic.create(
       name: Faker::Lorem.word,
   )
+  color = topic.color_topic if topic#(topic)
+  topic.update_attributes(color:color)
 end
-color = topic.color_topic(topic.id)
-topic.update_attributes(color:color)
+
 topics = Topic.all
 
 # bookmark_num = 1
@@ -162,6 +162,7 @@ url_list.each do |url|
                                   :embed => embed)
   bookmark.update_attributes!(created_at: rand(10.minutes .. 1.year).ago)
   bookmark.save
+  puts "#{bookmark.url} saved"
 end
 bookmarks = Bookmark.all
 
