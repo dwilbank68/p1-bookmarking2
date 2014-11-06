@@ -5,7 +5,6 @@
 .user-info { margin-top: 9px; }
 .nav {
   height: 65px;
-//  background: black;
   color: white;
   text-shadow:        0px -2px 4px      rgba(33,129, 199, 1),
   0px  2px 4px      rgba(33,129, 199, 1);
@@ -14,6 +13,28 @@
 .nav-tabs > li > a:hover {
   color: white;
   background-color: #222;
+}
+
+.headline-box {
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  text-shadow:        0px -2px 4px      rgba(33,129, 199, 1),
+  0px  2px 4px      rgba(33,129, 199, 1);
+  padding-bottom: 5px;
+}
+
+.headline {
+  font-family: 'Michroma', sans-serif;
+  font-size: 3em;
+  color: white;
+  text-shadow:        0px -2px 4px      rgba(33,129, 199, 1),
+  0px  2px 4px      rgba(33,129, 199, 1);
+  padding-top: 0px;
+  text-align: center;
+}
+
+.smaller {
+  font-size: 2em;
 }
 
 .topic-name {
@@ -38,10 +59,6 @@ li {
 .description {
   font-style: italic;
   font-size: 75%;
-}
-
-.item {
-
 }
 
 table {

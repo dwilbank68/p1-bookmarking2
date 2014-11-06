@@ -1,8 +1,9 @@
-console.log("destroy.js.erb called")
+//console.log('destroy.js.erb firing');
+//console.log(@like[0].inspect);
 
 
 <% if @like[0].destroyed? %> // hide the 'unlike' link and reveal the 'like' link
-    console.log("and @like[0] was destroyed")
+    console.log("and @like[0] was destroyed");
     $('#bookmark-' +<%= @bookmark.id %>).removeClass('liked-color-1 liked-color-2 liked-color-3 liked-color-4 liked-color-5');
     $('#unlike-' +<%= @bookmark.id %>).addClass('hidden');
     $('#like-' +<%= @bookmark.id %>).removeClass('hidden');
@@ -12,6 +13,6 @@ console.log("destroy.js.erb called")
     $('#likes').text(<%= current_user.likes.count %>);
 
 <% else %>
-    alert('@like[0].destroyed? was false');
+    //alert('@like[0].destroyed? was false');
     //$('#bookmark-' +<%#= @bookmark.id %>).prepend("<div class='alert alert-error'><%#= flash[:error] %></div>");
 <% end %>

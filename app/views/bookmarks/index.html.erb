@@ -1,3 +1,11 @@
+
+<% if current_user %>
+    <p class="headline headline-box">All Bookmarks</p>
+<% else %>
+    <p class="headline headline-box smaller">All Bookmarks - Sign In To Build Your Own Collection</p>
+<% end %>
+
+
 <div id="content" class="col-xs-10 col-xs-offset-1">
   <%= render @bookmarks %>
 </div>

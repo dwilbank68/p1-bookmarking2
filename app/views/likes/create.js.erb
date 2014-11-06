@@ -9,8 +9,8 @@
     $('#submissions').text(<%= current_user.bookmarks.count %>);
     $('#likes').text(<%= current_user.likes.count %>);
 <% else %>
-    alert('@like was not valid');
-    //$('#bookmark-' +<%#= @bookmark.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
+    //alert('@like was not valid');
+    $('#bookmark-' +<%= @bookmark.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
 <% end %>
 
 
