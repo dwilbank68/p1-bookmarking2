@@ -115,7 +115,7 @@ boss.save!
 users = User.all
 
 15.times do
-  Topic.create(
+  topic = Topic.create(
       name: Faker::Lorem.word,
   )
 end
