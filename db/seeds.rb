@@ -84,6 +84,10 @@ url_list = ["http://www.cifs.dk",
             "http://www.dgquarterly.com",
             "http://www.arcfinity.org"]
 
+User.destroy_all
+Topic.destroy_all
+Bookmark.destroy_all
+
 5.times do
   user = User.new(
       name: Faker::Name.name,
