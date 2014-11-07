@@ -1,14 +1,20 @@
-//console.log('create.js.erb has been called on #bookmark <%#= @bookmark.id %>');
+console.log('create.js.erb has been called on #bookmark <%#= @bookmark.id %>');
 <%# if @like.valid? %>
     //console.log('and @like.valid? is true');
-    var id = <%= @bookmark.id %>;
-    console.log(id);
-    $('#bookmark-' + id).toggleClass('liked-' + '<%= @bookmark.topic.color %>');
-    $('#unlike-'   + id).toggleClass('hidden');//removeClass('hidden');
-    $('#like-'     + id).toggleClass('hidden');//addClass('hidden');
+    //var id = <%#= @bookmark.id %>;
+    //console.log(id);
+//    $('#bookmark-' + id).toggleClass('liked-' + '<%#= @bookmark.topic.color %>');
+//    $('#unlike-'   + id).toggleClass('hidden'); // show
+//    $('#like-'     + id).toggleClass('hidden'); // hide
 
-    $('#submissions').text(<%= current_user.bookmarks.count %>);
-    $('#likes').text(<%= current_user.likes.count %>);
+$('#bookmark-28').toggleClass('liked-color-3');
+$('#unlike-28').toggleClass('hidden'); // show
+$('#like-28').toggleClass('hidden'); // hide
+
+
+//
+//    $('#submissions').text(<%#= current_user.bookmarks.count %>);
+//    $('#likes').text(<%#= current_user.likes.count %>);
 <%# else %>
     //alert('something went bad');
     //$('#bookmark-' +<%#= @bookmark.id %>).prepend("<div class='alert alert-error'><%#= flash[:error] %></div>");
