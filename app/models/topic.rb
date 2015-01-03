@@ -16,7 +16,7 @@ class Topic < ActiveRecord::Base
 
   def check_for_bookmarks
     if bookmarks.any?
-      errors[:base] << "cannot delete submission that has already been paid"
+      errors[:base] << "cannot delete topic that still contains posts"
       return false
     end
   end
