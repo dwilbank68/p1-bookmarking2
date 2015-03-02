@@ -22,7 +22,7 @@ class IncomingController < ApplicationController
     description, title = embedly_obj[:description], embedly_obj[:title]
     title = nil if title == description # if title and description come out identical, make title nil
     thumbnail_url = embedly_json["thumbnail_url"]
-    embed = embedly_obj[:media][:html]
+    embed = embedly_obj[:media][:html] if embedly_obj[:media][:html]
     bookmark = email_user.bookmarks.build(:url => url,                 :topic => topic,
                                           :description => description, :title => title,
                                           :thumbnail => thumbnail_url, :embed => embed)
