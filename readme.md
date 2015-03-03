@@ -18,4 +18,4 @@ A quick video demo will be available at [www.davidwilbanks.net](www.davidwilbank
 1. As a user, I want to "like and unlike" bookmarks created by other users.
 1. As a user, I want to see a list of bookmarks on my personal profile that I've added or liked.
 
-Yeah, it does all those things.
+And of course it does all those things.
