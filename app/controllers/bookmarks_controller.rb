@@ -20,7 +20,7 @@ class BookmarksController < ApplicationController
     end
 
     respond_with(@bookmark) do |format|
-      format.html { redirect_to :back } # is this limiting itself to one view? I have 3 that need ajax destroy
+      format.html { redirect_to :back }
     end
 
   end
