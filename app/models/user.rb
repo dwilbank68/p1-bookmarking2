@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    role == 'admin'          # which is really self.role == 'admin'
+    role == 'admin'
   end
 
   def moderator?
