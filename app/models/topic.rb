@@ -21,11 +21,6 @@ class Topic < ActiveRecord::Base
     end
   end
 
-  # def color_topic(topic) # distributes color-0 thru color-4 equally through all topics
-  #   puts topic.id
-  #     "color-#{topic.id % 5}"
-  # end
-
   def color_topic # distributes color-0 thru color-4 equally through all topics
     puts self.id
     "color-#{self.id % 5}"
@@ -33,5 +28,3 @@ class Topic < ActiveRecord::Base
 
 end
 
-#liked_bookmark_ids = current_user.likes.pluck(:bookmark_id)
-#@liked_bookmarks = Bookmark.joins(:topic).where(id:liked_bookmark_ids).order('topics.name').order('created_at DESC')
