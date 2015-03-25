@@ -3,7 +3,6 @@ class BookmarksController < ApplicationController
   respond_to :html, :js
 
   def index
-    # ordered by topic (alphabetical), then date (descending)
     @bookmarks = Bookmark.joins(:topic).order('topics.name').order('created_at DESC')
     @current_user = current_user
   end
