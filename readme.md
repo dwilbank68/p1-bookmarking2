@@ -5,7 +5,7 @@ by David Wilbanks
 ...is my first project from the [bloc.io](http://www.bloc.io) **Full Stack Web Development** course
 (and it will get a decent name when I think of one).
 
-A quick video demo will be available at [www.davidwilbanks.net](www.davidwilbanks.net) in early March 2015.
+A quick video demo is available at [www.davidwilbanks.net](www.davidwilbanks.net).
 
 ###The Requirements (altered slightly)
 
